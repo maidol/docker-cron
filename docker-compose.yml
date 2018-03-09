@@ -1,0 +1,11 @@
+version: '2.1'
+
+services:
+  cron-clearlog:
+    image: 'cw-cron:latest'
+    restart: always
+    environment:
+      # CLEAR_LOG_DIR: '/acs/log'
+      CRON_TASK: '0 3 * * *  python /app/tasks/clear_log.py >> /var/log/cron.log 2>&1'
+    # volumes:
+    # - /acs/log:/acs/log:rw
